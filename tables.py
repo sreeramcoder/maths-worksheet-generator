@@ -49,14 +49,20 @@ def create_pdf(questions):
     pdf.add_page()
     pdf.set_font("Helvetica", size=12)
     pdf.set_auto_page_break(auto=True, margin=15)
-    column = 0
+    column_width = 60  # Width of each column
+    column = 0  # Initialize column count
     for question in questions:
-        pdf.set_xy(10 + column * 90, pdf.get_y())
-        pdf.cell(0, 10, question)
-        if column == 1:
-            pdf.ln(10)
-        column = 1 - column  # toggle between 0 and 1
+        x_position = 10 + column * column_width
+        pdf.set_xy(x_position, pdf.get_y())
+        pdf.cell(column_width - 10, 10, question)  # Adjusted width to account for the line of separation
+        if column < 2:
+            pdf.line(x_position + column_width - 10, pdf.get_y() - 10, x_position + column_width - 10, pdf.get_y())  # Draw line of separation
+        column = (column + 1) % 3  # Increment column count, and reset to 0 if it reaches 3
+        if column == 0:
+            pdf.ln(10)  # Move to the next line after every third column
+
     pdf.output('test.pdf')
+
 
 questions = generate_questions()
 create_pdf(questions)
