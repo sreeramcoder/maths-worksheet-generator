@@ -35,6 +35,8 @@ def mult_1():
     
     return f'{a} {op} '*(b-1) + f'{a} = _____'
 
+# 
+# 4 + 6 + 2 + 8 + 1 + 9 (for range = 3)
 def tens_1():
     ntens = random.randint(2,5)
 
@@ -45,13 +47,76 @@ def tens_1():
         s.append(f'{m}')
         s.append(f'{n}')
 
-    #random.shuffle(s)
     return '+'.join(s) + "= _____"
+
+# 
+# 4 + 6 + 2 + 8 + 1 + 9 + 4 (for range = 3)
+def tens_and_number_1():
+    ntens = random.randint(2,5)
+
+    s = list()
+    for _ in range(ntens):
+        n = random.randint(1,9)
+        m = 10 - n
+        s.append(f'{m}')
+        s.append(f'{n}')
+
+    n = random.randint(1,9)
+    s.append(f'{n}')
+
+    return '+'.join(s) + "= _____"
+
+
+# 
+# 4 + 2 + 6 + 8 + 9 + 1 (for range = 3)
+def tens_2():
     
+    ntens = random.randint(2,5)
+
+    s = list()
+    for _ in range(ntens):
+        n = random.randint(1,9)
+        m = 10 - n
+        s.append(f'{m}')
+        s.append(f'{n}')
+
+    # make it bit harder
+    random.shuffle(s)
+
+    return '+'.join(s) + "= _____"
+
+# 
+# 4 + 2 + 6 + 8 + 9 + 1 + 2 (for range = 3)
+def tens_and_number_2():
+    
+    ntens = random.randint(2,5)
+
+    s = list()
+    for _ in range(ntens):
+        n = random.randint(1,9)
+        m = 10 - n
+        s.append(f'{m}')
+        s.append(f'{n}')
+
+    n = random.randint(1,9)
+    s.append(f'{n}')
+    
+    # make it bit harder
+    random.shuffle(s)
+
+    return '+'.join(s) + "= _____"
+
+
+# 4 + 3 - 3
+def cancellation_1():
+    a = random.randint(1, 9)
+    b = random.randint(1, 10 - a)
+    return f'{a} + {b} - {b} = _____'
         
      
 def generate_question():
-    types = [addition, subtraction, multiplication, mult_1, tens_1]
+    types = [addition, subtraction, multiplication, mult_1, tens_1, tens_2,
+             tens_and_number_1, tens_and_number_2, cancellation_1]
 
     choice = types[random.randint(0, len(types)-1)]
     
