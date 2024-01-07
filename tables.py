@@ -9,13 +9,34 @@ class PDF(FPDF):
         self.set_x((210 - self.get_string_width(page_number_text)) / 2)  # Center the page number text
         self.cell(0, 10, page_number_text)  # Page number
         
-
+# 2 + 7 = ______
 def addition():
     a = random.randint(1, 9)
     b = random.randint(1, 10 - a)
     op = '+'
     return f'{a} {op} {b} = _____'
 
+# 3 + 8 = ______
+def addition_2():
+    a = random.randint(1, 9)
+    b = random.randint(1, 12 - a)
+    op = '+'
+    return f'{a} {op} {b} = _____'
+
+# 30 + 20 = ______
+def addition_3():
+    a = random.randint(1, 9)
+    b = random.randint(1, 10 - a)
+
+    a *= 10
+    b *= 10
+    
+    op = '+'
+    
+    return f'{a} {op} {b} = _____'
+
+
+# 5 - 2 = _____
 def subtraction():
     a = random.randint(1, 10)
     b = random.randint(1, a)
@@ -23,14 +44,22 @@ def subtraction():
     op = '-'
     return f'{a} {op} {b} = _____'
 
+# 12 - 2 = _____
+def subtraction_2():
+    a = random.randint(1, 12)
+    b = min(10, random.randint(1, a))
+    
+    op = '-'
+    return f'{a} {op} {b} = _____'
+
 def multiplication():
-    a, b = random.randint(1, 8), random.randint(1, 8)
+    a, b = random.randint(1, 10), random.randint(1, 10)
     op = 'x'
     return f'{a} {op} {b} = _____'
 
 # 4 + 4 + 4 + 4 + 4 = _______
 def mult_1():
-    a, b = random.randint(1, 8), random.randint(2, 8)
+    a, b = random.randint(1, 9), random.randint(2, 9)
     op = '+'
     
     return f'{a} {op} '*(b-1) + f'{a} = _____'
@@ -112,11 +141,46 @@ def cancellation_1():
     a = random.randint(1, 9)
     b = random.randint(1, 10 - a)
     return f'{a} + {b} - {b} = _____'
-        
-     
+
+# 3 + 4 - 3
+def cancellation_2():
+    a = random.randint(1, 9)
+    b = random.randint(1, 10 - a)
+    return f'{b} + {a} - {b} = _____'
+
+
+# (5 x 4) + 1 = ___
+def paren_1():
+    a, b = random.randint(1, 10), random.randint(1, 10)
+    op = 'x'
+    return f'({a} {op} {b}) + 1 = _____'
+
+# (5 x 4) - 1 = ___
+def paren_2():
+    a, b = random.randint(1, 10), random.randint(1, 10)
+    op = 'x'
+    return f'({a} {op} {b}) - 1 = _____'
+
+# 1 + (5 x 4) = ___
+def paren_3():
+    a, b = random.randint(1, 10), random.randint(1, 10)
+    op = 'x'
+    return f'1 + ({a} {op} {b}) = _____'
+
 def generate_question():
-    types = [addition, subtraction, multiplication, mult_1, tens_1, tens_2,
-             tens_and_number_1, tens_and_number_2, cancellation_1]
+    #types = [addition, subtraction, multiplication, mult_1, tens_1, tens_2,
+    #         tens_and_number_1, tens_and_number_2, cancellation_1]
+
+    types = [addition_2,
+             addition_3,
+             subtraction_2,
+             multiplication,
+             mult_1,
+             cancellation_1,
+             cancellation_2,
+             paren_1,
+             paren_2,
+             paren_3]
 
     choice = types[random.randint(0, len(types)-1)]
     
@@ -136,14 +200,14 @@ def create_pdf(questions):
     pdf.add_page()
     pdf.set_font("Helvetica", size=12)
     pdf.set_auto_page_break(auto=True, margin=15)
-    column_width = 90  # Width of each column
+    column_width = 100  # Width of each column
     column = 0  # Initialize column count
     for question in questions:
         x_position = 10 + column * column_width
         pdf.set_xy(x_position, pdf.get_y())
         pdf.cell(column_width - 10, 10, question)  # Adjusted width to account for the line of separation
-        if column < 3:
-            pdf.line(x_position + column_width - 10, pdf.get_y() - 10, x_position + column_width - 10, pdf.get_y())  # Draw line of separation
+        if column == 0:
+            pdf.line(x_position + column_width - 10, pdf.get_y() , x_position + column_width - 10, pdf.get_y()+10)  # Draw line of separation
         column = (column + 1) % 2  # Increment column count, and reset to 0 if it reaches 3
         if column == 0:
             pdf.ln(10)  # Move to the next line after every third column
