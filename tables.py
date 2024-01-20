@@ -16,17 +16,17 @@ def addition():
     op = '+'
     return f'{a} {op} {b} = _____'
 
-# 3 + 8 = ______
+# 6 + 8 = ______
 def addition_2():
     a = random.randint(1, 9)
-    b = random.randint(1, 12 - a)
+    b = random.randint(1, 14 - a)
     op = '+'
     return f'{a} {op} {b} = _____'
 
-# 30 + 20 = ______
+# 30 + 80 = ______
 def addition_3():
     a = random.randint(1, 9)
-    b = random.randint(1, 10 - a)
+    b = random.randint(1, 11 - a)
 
     a *= 10
     b *= 10
@@ -46,7 +46,7 @@ def subtraction():
 
 # 12 - 2 = _____
 def subtraction_2():
-    a = random.randint(1, 12)
+    a = random.randint(1, 14)
     b = min(10, random.randint(1, a))
     
     op = '-'
@@ -139,13 +139,13 @@ def tens_and_number_2():
 # 4 + 3 - 3
 def cancellation_1():
     a = random.randint(1, 9)
-    b = random.randint(1, 10 - a)
+    b = random.randint(1, 12 - a)
     return f'{a} + {b} - {b} = _____'
 
 # 3 + 4 - 3
 def cancellation_2():
     a = random.randint(1, 9)
-    b = random.randint(1, 10 - a)
+    b = random.randint(1, 12 - a)
     return f'{b} + {a} - {b} = _____'
 
 
@@ -153,19 +153,22 @@ def cancellation_2():
 def paren_1():
     a, b = random.randint(1, 10), random.randint(1, 10)
     op = 'x'
-    return f'({a} {op} {b}) + 1 = _____'
+    c = random.randint(1, 3)
+    return f'({a} {op} {b}) + {c} = _____'
 
 # (5 x 4) - 1 = ___
 def paren_2():
     a, b = random.randint(1, 10), random.randint(1, 10)
     op = 'x'
-    return f'({a} {op} {b}) - 1 = _____'
+    c = min(random.randint(1, 3), a*b)
+    return f'({a} {op} {b}) - {c} = _____'
 
 # 1 + (5 x 4) = ___
 def paren_3():
     a, b = random.randint(1, 10), random.randint(1, 10)
     op = 'x'
-    return f'1 + ({a} {op} {b}) = _____'
+    c = random.randint(1, 3)    
+    return f'{c} + ({a} {op} {b}) = _____'
 
 def generate_question():
     #types = [addition, subtraction, multiplication, mult_1, tens_1, tens_2,
