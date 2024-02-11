@@ -23,10 +23,18 @@ def addition_2():
     op = '+'
     return f'{a} {op} {b} = _____'
 
+# 6 + 8 = ______
+def addition_2_x():
+    a = random.randint(1, 9)
+    b = random.randint(1, 14 - a)
+    op = '+'
+    r = a + b
+    return f'x {op} {b} = {r} ; x = ___'
+
 # 30 + 80 = ______
 def addition_3():
     a = random.randint(1, 9)
-    b = random.randint(1, 11 - a)
+    b = random.randint(1, 15 - a)
 
     a *= 10
     b *= 10
@@ -34,7 +42,6 @@ def addition_3():
     op = '+'
     
     return f'{a} {op} {b} = _____'
-
 
 # 5 - 2 = _____
 def subtraction():
@@ -46,23 +53,39 @@ def subtraction():
 
 # 12 - 2 = _____
 def subtraction_2():
-    a = random.randint(1, 14)
+    a = random.randint(1, 15)
     b = min(10, random.randint(1, a))
     
     op = '-'
     return f'{a} {op} {b} = _____'
 
+# 12 - 2 = _____
+def subtraction_2_x():
+    a = random.randint(1, 15)
+    b = min(10, random.randint(1, a))
+    
+    op = '-'
+    r = a - b
+    return f'x {op} {b} = {r} ; x =___'
+
+
 def multiplication():
-    a, b = random.randint(1, 10), random.randint(1, 10)
+    a, b = random.randint(2, 10), random.randint(2, 10)
     op = 'x'
-    return f'{a} {op} {b} = _____'
+    return f'{a} {op} {b} = ___'
+
+def multiplication_x():
+    a, b = random.randint(2, 10), random.randint(2, 10)
+    op = 'x'
+    r = a * b
+    return f'y {op} {b} = {r} ; y = ___'
 
 # 4 + 4 + 4 + 4 + 4 = _______
 def mult_1():
-    a, b = random.randint(1, 9), random.randint(2, 9)
+    a, b = random.randint(1, 10), random.randint(2, 10)
     op = '+'
     
-    return f'{a} {op} '*(b-1) + f'{a} = _____'
+    return f'{a} {op} '*(b-1) + f'{a} = ___'
 
 # 
 # 4 + 6 + 2 + 8 + 1 + 9 (for range = 3)
@@ -76,7 +99,7 @@ def tens_1():
         s.append(f'{m}')
         s.append(f'{n}')
 
-    return '+'.join(s) + "= _____"
+    return '+'.join(s) + "= ___"
 
 # 
 # 4 + 6 + 2 + 8 + 1 + 9 + 4 (for range = 3)
@@ -93,7 +116,7 @@ def tens_and_number_1():
     n = random.randint(1,9)
     s.append(f'{n}')
 
-    return '+'.join(s) + "= _____"
+    return '+'.join(s) + "= ___"
 
 
 # 
@@ -112,7 +135,7 @@ def tens_2():
     # make it bit harder
     random.shuffle(s)
 
-    return '+'.join(s) + "= _____"
+    return '+'.join(s) + "= ___"
 
 # 
 # 4 + 2 + 6 + 8 + 9 + 1 + 2 (for range = 3)
@@ -133,51 +156,51 @@ def tens_and_number_2():
     # make it bit harder
     random.shuffle(s)
 
-    return '+'.join(s) + "= _____"
+    return '+'.join(s) + "= ___"
 
 
 # 4 + 3 - 3
 def cancellation_1():
     a = random.randint(1, 9)
-    b = random.randint(1, 12 - a)
-    return f'{a} + {b} - {b} = _____'
+    b = random.randint(1, 15 - a)
+    return f'{a} + {b} - {b} = ___'
 
 # 3 + 4 - 3
 def cancellation_2():
     a = random.randint(1, 9)
-    b = random.randint(1, 12 - a)
-    return f'{b} + {a} - {b} = _____'
+    b = random.randint(1, 15 - a)
+    return f'{b} + {a} - {b} = ___'
 
 
 # (5 x 4) + 1 = ___
 def paren_1():
-    a, b = random.randint(1, 10), random.randint(1, 10)
+    a, b = random.randint(2, 10), random.randint(2, 10)
     op = 'x'
-    c = random.randint(1, 3)
-    return f'({a} {op} {b}) + {c} = _____'
+    c = random.randint(1, 6)
+    return f'({a} {op} {b}) + {c} = ___'
 
 # (5 x 4) - 1 = ___
 def paren_2():
-    a, b = random.randint(1, 10), random.randint(1, 10)
+    a, b = random.randint(2, 10), random.randint(2, 10)
     op = 'x'
-    c = min(random.randint(1, 3), a*b)
-    return f'({a} {op} {b}) - {c} = _____'
+    c = min(random.randint(1, 6), a*b)
+    return f'({a} {op} {b}) - {c} = ___'
 
 # 1 + (5 x 4) = ___
 def paren_3():
-    a, b = random.randint(1, 10), random.randint(1, 10)
+    a, b = random.randint(2, 10), random.randint(2, 10)
     op = 'x'
-    c = random.randint(1, 3)    
-    return f'{c} + ({a} {op} {b}) = _____'
+    c = random.randint(1, 6)    
+    return f'{c} + ({a} {op} {b}) = ___'
 
 def generate_question():
     #types = [addition, subtraction, multiplication, mult_1, tens_1, tens_2,
     #         tens_and_number_1, tens_and_number_2, cancellation_1]
 
-    types = [addition_2,
+    types = [addition_2_x,
              addition_3,
-             subtraction_2,
-             multiplication,
+             subtraction_2_x,
+             multiplication_x,
              mult_1,
              cancellation_1,
              cancellation_2,
@@ -190,7 +213,8 @@ def generate_question():
     return choice()
 
        
-def generate_questions(num_questions=756):
+def generate_questions(num_questions=1134):
+    # per page 54 questions
     questions = []
 
     for i in range(num_questions):
@@ -201,7 +225,7 @@ def generate_questions(num_questions=756):
 def create_pdf(questions):
     pdf = PDF()
     pdf.add_page()
-    pdf.set_font("Helvetica", size=12)
+    pdf.set_font("Helvetica", size=10)
     pdf.set_auto_page_break(auto=True, margin=15)
     column_width = 100  # Width of each column
     column = 0  # Initialize column count
