@@ -29,7 +29,7 @@ def addition_2_x():
     b = random.randint(1, 14 - a)
     op = '+'
     r = a + b
-    return f'x {op} {b} = {r} ; x = ___'
+    return f'Y {op} {b} = {r} ; Y = ___'
 
 # 30 + 80 = ______
 def addition_3():
@@ -41,7 +41,23 @@ def addition_3():
     
     op = '+'
     
-    return f'{a} {op} {b} = _____'
+    return f'{a} {op} {b} = ____'
+
+# 12 + 15 = ______
+def addition_4():
+    a = random.randint(1, 15)
+    b = random.randint(1, 15)
+
+    op = '+'
+    
+    return f'{a} {op} {b} = ____'
+
+# 1/2 of 4 = 
+def fraction_1():
+    n = 2*random.randint(1,10)
+
+    return f'1/2 of {n} = ___'
+
 
 # 5 - 2 = _____
 def subtraction():
@@ -66,7 +82,7 @@ def subtraction_2_x():
     
     op = '-'
     r = a - b
-    return f'x {op} {b} = {r} ; x =___'
+    return f'A {op} {b} = {r} ; A =___'
 
 
 def multiplication():
@@ -78,7 +94,7 @@ def multiplication_x():
     a, b = random.randint(2, 10), random.randint(2, 10)
     op = 'x'
     r = a * b
-    return f'y {op} {b} = {r} ; y = ___'
+    return f'A {op} {b} = {r} ; A = ___'
 
 # 4 + 4 + 4 + 4 + 4 = _______
 def mult_1():
@@ -193,27 +209,29 @@ def paren_3():
     c = random.randint(1, 6)    
     return f'{c} + ({a} {op} {b}) = ___'
 
+
 def generate_question():
     #types = [addition, subtraction, multiplication, mult_1, tens_1, tens_2,
     #         tens_and_number_1, tens_and_number_2, cancellation_1]
 
     types = [addition_2_x,
              addition_3,
+             addition_4,
              subtraction_2_x,
              multiplication_x,
              mult_1,
-             cancellation_1,
              cancellation_2,
+             fraction_1,
              paren_1,
-             paren_2,
-             paren_3]
+             paren_2]
+
 
     choice = types[random.randint(0, len(types)-1)]
     
     return choice()
 
        
-def generate_questions(num_questions=1134):
+def generate_questions(num_questions=54*14):
     # per page 54 questions
     questions = []
 
