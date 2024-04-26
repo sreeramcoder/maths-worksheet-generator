@@ -25,16 +25,16 @@ def addition_2():
 
 # 6 + 8 = ______
 def addition_2_x():
-    a = random.randint(1, 9)
-    b = random.randint(1, 16 - a)
+    a = random.randint(1, 10)
+    b = random.randint(1, 20 - a)
     op = '+'
     r = a + b
     return f'Y {op} {b} = {r} ; Y = ___'
 
 # 30 + 80 = ______
 def addition_3():
-    a = random.randint(1, 9)
-    b = random.randint(1, 16 - a)
+    a = random.randint(1, 10)
+    b = random.randint(1, 18 - a)
 
     a *= 10
     b *= 10
@@ -45,8 +45,8 @@ def addition_3():
 
 # 12 + 15 = ______
 def addition_4():
-    a = random.randint(5, 15)
-    b = random.randint(5, 15)
+    a = random.randint(5, 20)
+    b = random.randint(5, 20)
 
     op = '+'
     
@@ -54,10 +54,32 @@ def addition_4():
 
 # 1/2 of 4 = 
 def fraction_1():
-    a = random.randint(2,4)
-    n = a*random.randint(1,5)
 
-    return f'1/{a} x {n} = ___'
+    a = random.randint(2,6)
+    b = min(random.randint(1, 2), a-1)
+    n = a*random.randint(1,7)
+
+    return f'({b}/{a}) x {n} = ___'
+
+# (1/2 x 4) +- 2 = 
+def fraction_2():
+    a = random.randint(2,4)
+    b = random.randint(1,5)
+    n = a*b
+
+    toss = random.randint(0,1)
+    s = 0
+    op = ""
+    if toss==0:
+        #addition
+        op = "+"
+        s = random.randint(1,5)
+    else:
+        #sub
+        op = "-"
+        s = random.randint(1,min(random.randint(1,5),b))
+
+    return f'(1/{a} x {n}) {op} {s} = ___'
 
 
 # 5 - 2 = _____
@@ -78,8 +100,8 @@ def subtraction_2():
 
 # 12 - 2 = _____
 def subtraction_2_x():
-    a = random.randint(1, 16)
-    b = min(10, random.randint(1, a))
+    a = random.randint(1, 20)
+    b = random.randint(1, a)
     
     op = '-'
     r = a - b
@@ -189,19 +211,23 @@ def cancellation_2():
     return f'{b} + {a} - {b} = ___'
 
 
-# (5 x 4) + 1 = ___
-def paren_1():
+# (5 x 4) +- 1 = ___
+def paren():
     a, b = random.randint(2, 10), random.randint(2, 10)
     op = 'x'
-    c = random.randint(1, 10)
-    return f'({a} {op} {b}) + {c} = ___'
 
-# (5 x 4) - 1 = ___
-def paren_2():
-    a, b = random.randint(2, 10), random.randint(2, 10)
-    op = 'x'
-    c = min(random.randint(1, 10), a*b)
-    return f'({a} {op} {b}) - {c} = ___'
+
+    toss = random.randint(0, 1)
+    if toss == 0:
+        # addition
+        op = "+"
+        c = random.randint(1, 10)
+    else:
+        op = "-"
+        c = min(random.randint(1, 10), a*b)
+        
+    return f'({a} x {b}) {op} {c} = ___'
+
 
 # 1 + (5 x 4) = ___
 def paren_3():
@@ -220,11 +246,9 @@ def generate_question():
              addition_4,
              subtraction_2_x,
              multiplication_x,
-             mult_1,
-             cancellation_2,
              fraction_1,
-             paren_1,
-             paren_2]
+             fraction_2,
+             paren]
 
 
     choice = types[random.randint(0, len(types)-1)]
