@@ -1,6 +1,8 @@
 import random
 from fpdf import FPDF
 
+DIVISION = "\u00F7"
+
 class PDF(FPDF):
     def footer(self):
         self.set_y(-10)  # Set position 1.5 cm from the bottom
@@ -23,7 +25,7 @@ def addition_2():
     op = '+'
     return f'{a} {op} {b} = _____'
 
-# 6 + 8 = ______
+# Y + 8 = 14
 def addition_2_x():
     a = random.randint(1, 10)
     b = random.randint(1, 20 - a)
@@ -100,7 +102,7 @@ def subtraction_2():
 
 # 12 - 2 = _____
 def subtraction_2_x():
-    a = random.randint(1, 20)
+    a = random.randint(1, 25)
     b = random.randint(1, a)
     
     op = '-'
@@ -113,6 +115,7 @@ def multiplication():
     op = 'x'
     return f'{a} {op} {b} = ___'
 
+# A x 4 = 20; A = 
 def multiplication_x():
     a, b = random.randint(2, 10), random.randint(2, 10)
     op = 'x'
@@ -125,6 +128,14 @@ def mult_1():
     op = '+'
     
     return f'{a} {op} '*(b-1) + f'{a} = ___'
+
+# 24 / 4 = _____
+def division():
+    a, b = random.randint(2, 10), random.randint(2, 10)
+    c = a * b
+    op = DIVISION
+    return f'{c} {op} {b} = ____'
+
 
 # 
 # 4 + 6 + 2 + 8 + 1 + 9 (for range = 3)
@@ -241,14 +252,14 @@ def generate_question():
     #types = [addition, subtraction, multiplication, mult_1, tens_1, tens_2,
     #         tens_and_number_1, tens_and_number_2, cancellation_1]
 
-    types = [addition_2_x,
-             addition_3,
+    types = [
              addition_4,
              subtraction_2_x,
              multiplication_x,
-             fraction_1,
+             division,
              fraction_2,
-             paren]
+        fraction_2
+    ]
 
 
     choice = types[random.randint(0, len(types)-1)]
