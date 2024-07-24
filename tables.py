@@ -25,6 +25,17 @@ def addition_2():
     op = '+'
     return f'{a} {op} {b} = _____'
 
+# 1 + Y + 8 = 10
+def addition_3_x():
+    
+    a = random.randint(1, 5)
+    y = random.randint(1, 5)
+    b = random.randint(1, 5)
+    s = a + y + b
+    op = '+'
+    return f'{a} + Y + {b} = {s}; Y = ___'
+
+
 # Y + 8 = 14
 def addition_2_x():
     a = random.randint(1, 10)
@@ -258,7 +269,7 @@ def generate_question():
              multiplication_x,
              division,
              fraction_2,
-        fraction_2
+             addition_3_x
     ]
 
 
