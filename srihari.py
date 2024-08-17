@@ -13,10 +13,18 @@ class PDF(FPDF):
 
 # Various arithmetic question functions (e.g., addition, subtraction, multiplication, division, fractions, etc.)
 def addition_4():
-    a = random.randint(5, 20)
-    b = random.randint(5, 20)
+    a = random.randint(5, 30)
+    b = random.randint(5, 30)
     op = '+'
     return f'{a} {op} {b} = ____'
+
+
+def sub_1():
+    a = random.randint(11, 99)
+    b = random.randint(1, a)
+    op = '-'
+    return f'{a} {op} {b} = ____'
+    
 
 def subtraction_2_x():
     a = random.randint(1, 25)
@@ -55,9 +63,9 @@ def fraction_2():
     return f'(1/{a} x {n}) {op} {s} = ___'
 
 def addition_3_x():
-    a = random.randint(1, 5)
-    y = random.randint(1, 5)
-    b = random.randint(1, 5)
+    a = random.randint(1, 7)
+    y = random.randint(1, 7)
+    b = random.randint(1, 7)
     s = a + y + b
     op = '+'
     return f'{a} + Y + {b} = {s}; Y = ___'
@@ -65,6 +73,7 @@ def addition_3_x():
 def generate_question():
     types = [
         addition_4,
+        sub_1,
         subtraction_2_x,
         multiplication_x,
         division,

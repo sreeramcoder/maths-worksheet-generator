@@ -13,8 +13,8 @@ class PDF(FPDF):
 
 # Various arithmetic question functions (e.g., addition, subtraction, multiplication, division, fractions, etc.)
 def addition():
-    a = random.randint(2, 9)
-    b = random.randint(2, 9)
+    a = random.randint(2, 99)
+    b = random.randint(2, 99)
     op = '+'
     return f'{a} {op} {b} = ____'
 
