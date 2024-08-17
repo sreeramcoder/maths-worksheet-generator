@@ -12,24 +12,30 @@ class PDF(FPDF):
         self.cell(0, 10, page_number_text)  # Page number
 
 # Various arithmetic question functions (e.g., addition, subtraction, multiplication, division, fractions, etc.)
-def addition_4():
-    a = random.randint(5, 20)
-    b = random.randint(5, 20)
+def addition():
+    a = random.randint(2, 9)
+    b = random.randint(2, 9)
     op = '+'
     return f'{a} {op} {b} = ____'
 
+def subtraction():
+    a = random.randint(1, 20)
+    b = random.randint(1, a)
+    op = '-'
+    return f'{a} {op} {b} = ___'
+
 def subtraction_2_x():
-    a = random.randint(1, 25)
+    a = random.randint(1, 20)
     b = random.randint(1, a)
     op = '-'
     r = a - b
     return f'A {op} {b} = {r} ; A =___'
 
-def multiplication_x():
+def multiplication():
     a, b = random.randint(2, 10), random.randint(2, 10)
     op = 'x'
     r = a * b
-    return f'A {op} {b} = {r} ; A = ___'
+    return f'{a} {op} {b} = ___'
 
 def division():
     a, b = random.randint(2, 10), random.randint(2, 10)
@@ -64,12 +70,11 @@ def addition_3_x():
 
 def generate_question():
     types = [
-        addition_4,
-        subtraction_2_x,
-        multiplication_x,
+        addition,
+        subtraction,
+        multiplication,
         division,
-        fraction_2,
-        addition_3_x
+        fraction_2
     ]
     choice = types[random.randint(0, len(types) - 1)]
     return choice()
@@ -117,5 +122,5 @@ def create_pdf(questions, questions_per_page, num_columns):
 
     pdf.output('test.pdf')
 
-questions = generate_questions(num_questions=100)  # Specify the total number of questions
-create_pdf(questions, questions_per_page=20, num_columns=1)  # Specify the number of questions per page and columns
+questions = generate_questions(num_questions=280)  # Specify the total number of questions
+create_pdf(questions, questions_per_page=20, num_columns=2)  # Specify the number of questions per page and columns
