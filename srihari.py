@@ -18,6 +18,14 @@ def addition_4():
     op = '+'
     return f'{a} {op} {b} = ____'
 
+# add three numbers
+def addition_5():
+    a = random.randint(5, 35)
+    b = random.randint(5, 35)
+    c = random.randint(5, 35)
+    op = '+'
+    return f'{a} {op} {b} {op} {c} = ____'
+
 
 def sub_1():
     a = random.randint(11, 99)
@@ -46,8 +54,8 @@ def division():
     return f'{c} {op} {b} = ____'
 
 def fraction_2():
-    a = random.randint(2, 4)
-    b = random.randint(1, 5)
+    a = random.randint(2, 5)
+    b = random.randint(1, 6)
     n = a * b
     toss = random.randint(0, 1)
     s = 0
@@ -63,22 +71,31 @@ def fraction_2():
     return f'(1/{a} x {n}) {op} {s} = ___'
 
 def addition_3_x():
-    a = random.randint(1, 7)
-    y = random.randint(1, 7)
-    b = random.randint(1, 7)
+    a = random.randint(1, 10)
+    y = random.randint(1, 10)
+    b = random.randint(1, 10)
     s = a + y + b
     op = '+'
     return f'{a} + Y + {b} = {s}; Y = ___'
 
+# A + 2 > 5; A = ?
+def satisfy_ineq_1():
+    x = random.randint(1, 7)
+    y = x + random.randint(1, 7)
+
+    op = '+'
+    return f'A + {x} > {y}; A = ___'
+    
+
 def generate_question():
     types = [
-        addition_4,
+        addition_5,
         sub_1,
         subtraction_2_x,
-        multiplication_x,
         division,
         fraction_2,
-        addition_3_x
+        addition_3_x,
+        satisfy_ineq_1
     ]
     choice = types[random.randint(0, len(types) - 1)]
     return choice()
