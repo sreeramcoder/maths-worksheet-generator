@@ -20,9 +20,9 @@ def addition_4():
 
 # add three numbers
 def addition_5():
-    a = random.randint(5, 35)
-    b = random.randint(5, 35)
-    c = random.randint(5, 35)
+    a = random.randint(5, 40)
+    b = random.randint(5, 40)
+    c = random.randint(5, 40)
     op = '+'
     return f'{a} {op} {b} {op} {c} = ____'
 
@@ -71,21 +71,59 @@ def fraction_2():
     return f'(1/{a} x {n}) {op} {s} = ___'
 
 def addition_3_x():
-    a = random.randint(1, 10)
-    y = random.randint(1, 10)
-    b = random.randint(1, 10)
+    a = random.randint(1, 11)
+    y = random.randint(1, 11)
+    b = random.randint(1, 11)
     s = a + y + b
     op = '+'
     return f'{a} + Y + {b} = {s}; Y = ___'
 
-# A + 2 > 5; A = ?
-def satisfy_ineq_1():
-    x = random.randint(1, 7)
-    y = x + random.randint(1, 7)
+
+# 5 < __ < 8; 
+def satisfy_ineq_0():
+    z = random.randint(7, 10)
+    x = random.randint(1, z-2)
 
     op = '+'
-    return f'A + {x} > {y}; A = ___'
+    return f'{x}  <  __  <  {z}'
     
+# 5 x __ < 8; 
+def satisfy_ineq_1():
+    z = random.randint(10, 50)
+    x = random.randint(2, 10)
+
+    op = '+'
+    return f'({x} x  __  ) <  {z}'
+
+
+# 5 < 8 x __ ; 
+def satisfy_ineq_2():
+    z = random.randint(10, 30)
+    x = random.randint(2, 10)
+
+    op = '+'
+    return f'{z} < ({x} x  __ )'
+    
+
+# 5 < __ + 2 < 8
+def satisfy_ineq_10():
+    z = random.randint(7, 10)
+    y = random.randint(3, z-3)
+    x = random.randint(y+1, z-2)
+
+    op = '+'
+    return f'{x}  < ( __ + {y} ) <  {z}'
+
+
+def satisfy_ineq_group():
+    subtypes = [
+        satisfy_ineq_0,
+        satisfy_ineq_1,
+        satisfy_ineq_2
+    ]
+
+    choice = subtypes[random.randint(0, len(subtypes) - 1)]
+    return choice()
 
 def generate_question():
     types = [
@@ -95,7 +133,7 @@ def generate_question():
         division,
         fraction_2,
         addition_3_x,
-        satisfy_ineq_1
+        satisfy_ineq_group
     ]
     choice = types[random.randint(0, len(types) - 1)]
     return choice()
@@ -110,7 +148,7 @@ def create_pdf(questions, questions_per_page, num_columns):
     # Calculate font size and line spacing based on questions per page
     if questions_per_page <= 10:
         font_size = 24
-        line_spacing = 30
+        line_spacing = 32
     elif questions_per_page <= 20:
         font_size = 20
         line_spacing = 25

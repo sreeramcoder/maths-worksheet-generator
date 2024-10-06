@@ -1,3 +1,4 @@
 fpdf
 black
+ipython
 
